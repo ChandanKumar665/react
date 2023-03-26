@@ -1,0 +1,19 @@
+{
+  "name": "react-project",
+  "version": "1.0.0",
+  "description": "Its a react project",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChandanKumar665/react-project.git"
+  },
+  "author": "Chandan Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChandanKumar665/react-project/issues"
+  },
+  "homepage": "https://github.com/ChandanKumar665/react-project#readme"
+}
