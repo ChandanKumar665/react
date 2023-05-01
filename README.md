@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Parcel
+
+- Dev Build
+- Local Server
+- HMR => Hot Module Replacement
+- File Watching Algorithm - written in c++
+- Caching
+- Image Optimization
+- Minification
+- Bundling
+- Compress
+- Consistent Hashing
+- Code Splitting
+- Differential Bundling
+- Diagnostic
+- Error Handling
+- SSL (Https) support
+- Tree Shaking - remove unused code
+- Different dev and prod build

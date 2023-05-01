@@ -1,0 +1,48 @@
+.logo {
+ height: 40px;
+ width: 40px;
+}
+.body {
+  margin-top: 100px;
+}
+.res-list {
+  flex-wrap: wrap;
+}
+.res-card {
+  margin: 0px 10px 10px 0px;
+  width: 300px;
+}
+.res-card:hover {
+  border: 2px solid #afafaf;
+  cursor: pointer;
+}
+.text-format {
+  padding: 5px 0px;
+  font-size: medium;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+}
+.res-name {
+  font-weight: 600;
+}
+.res-cuisines, .res-cost {
+  font-size: small;
+  font-weight: 400;
+}
+.crousel-card {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.crousel-card:hover {
+  transform: scale(1.1);
+  transition: transform .9s ease;
+}
+.crousel {
+  background-color: #282c3f;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.filter {
+  border: 1px solid #afafaf;
+  padding: 10px;
+}
