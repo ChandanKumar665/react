@@ -2105,3 +2105,7 @@ export const IMG_URL =
 
 export const CROUSEL_URL =
   'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/'
+export const BRAND_LOGO =
+  'https://img.freepik.com/free-vector/food-white-background_24908-61022.jpg'
+export const RESTAURANT_LIST_API =
+  'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.961863&lng=77.635559&page_type=DESKTOP_WEB_LISTING'
