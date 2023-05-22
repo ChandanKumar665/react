@@ -2109,3 +2109,11 @@ export const BRAND_LOGO =
   'https://img.freepik.com/free-vector/food-white-background_24908-61022.jpg'
 export const RESTAURANT_LIST_API =
   'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.961863&lng=77.635559&page_type=DESKTOP_WEB_LISTING'
+export const getDummyImg = size =>
+  `https://dummyimage.com/${size}/e7e2e2/000000.png&text=+`
+export const RESTAURANT_MENU_API =
+  'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&lat=12.961863&lng=77.635559'
+export const getFoodSymbol = (isVeg, size) =>
+  `https://img.icons8.com/color/${size}/${
+    !isVeg ? 'non-' : ''
+  }vegetarian-food-symbol.png`

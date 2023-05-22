@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ResCard from './ResCard'
 import Crousel from './Crousel'
-import { data, RESTAURANT_LIST_API } from '../constant'
+import { RESTAURANT_LIST_API } from '../constant'
+import Shimmer from './Shimmer'
 
 function search (searchText, resturantsList) {
   return resturantsList.filter(res =>
@@ -10,9 +11,9 @@ function search (searchText, resturantsList) {
 }
 
 const Body = () => {
-  const [dataList, setDataList] = useState(data)
-  const [carousel, restaurants] = dataList
-  const [reslist, setReslist] = useState(restaurants.data.data.cards)
+  // const [dataList, setDataList] = useState([])
+  const [carousel, setCarousel] = useState({ cards: [] })
+  const [reslist, setReslist] = useState([])
   const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
@@ -20,11 +21,11 @@ const Body = () => {
   }, [])
 
   async function getResturantsList () {
-    const res = await fetch(RESTAURANT_LIST_API)
+    const res = await fetch(RESTAURANT_LIST_API, { mode: 'cors' })
     const data = await res.json()
     let response = data?.data?.cards
-    response = [response[0], response[2]]
-    setReslist(response[1].data.data.cards)
+    setReslist(response[2]?.data?.data?.cards)
+    setCarousel(response[0]?.data?.data)
   }
 
   const filter = () => {
@@ -32,17 +33,24 @@ const Body = () => {
     setReslist(list)
   }
   const reset = () => {
-    setReslist(restaurants.data.data.cards)
+    // setReslist(restaurants.data.data.cards)
   }
   const sortByRatings = () => {
     const list = reslist.sort((a, b) => b.data.avgRating - a.data.avgRating)
     console.log(list)
     setReslist(list)
   }
+  console.log(reslist)
+
   return (
     <div className='body'>
-      <Crousel {...carousel.data.data} />
-      <h3>{reslist.length} resturants</h3>
+      <Crousel
+        {...((carousel.cards.length && { ...carousel }) || {
+          ...{ cards: Array(10).fill('') }
+        })}
+      />
+
+      <h3>{reslist?.length} resturants</h3>
       <div className='filter'>
         <button type='button' className='btn btn-dark' onClick={filter}>
           {'Filter > 4.2'}
@@ -77,9 +85,16 @@ const Body = () => {
         </button>
       </div>
       <div className='res-list d-flex'>
-        {reslist.map(res => (
-          <ResCard {...res.data} key={res.data.id} />
-        ))}
+        {!reslist.length ? (
+          <Shimmer />
+        ) : (
+          reslist.map(res => (
+            <ResCard
+              data={{ ...res.data, className: 'res-card' }}
+              key={res.data.id}
+            />
+          ))
+        )}
       </div>
     </div>
   )

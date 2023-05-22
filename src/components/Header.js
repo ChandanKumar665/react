@@ -12,23 +12,31 @@ const Navbar = () => (
       <ul className='navbar-nav d-flex'>
         <li className='nav-item'>
           <span className='nav-link'>
-            <Link to={'/'}>Home</Link>
+            <Link to={'/'} className='link link-head'>
+              Home
+            </Link>
           </span>
         </li>
         <li className='nav-item'>
           <span className='nav-link'>
-            <Link to={'/about'}>About</Link>
+            <Link to={'/about'} className='link link-head'>
+              About
+            </Link>
           </span>
         </li>
         <li className='nav-item'>
           <span className='nav-link'>
-            <Link to={'/contact'}>Contact</Link>
+            <Link to={'/contact'} className='link link-head'>
+              Contact
+            </Link>
           </span>
         </li>
         <li className='nav-item'>
-          <a className='nav-link' href='#'>
-            Cart
-          </a>
+          <span className='nav-link'>
+            <Link to={'/contact'} className='link link-head'>
+              Cart
+            </Link>
+          </span>
         </li>
       </ul>
     </div>
