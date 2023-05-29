@@ -10,7 +10,7 @@ const Navbar = () => (
     </div>
     <div className='d-flex'>
       <ul className='navbar-nav d-flex'>
-        <li className='nav-item'>
+        <li className='flex px-1'>
           <span className='nav-link'>
             <Link to={'/'} className='link link-head'>
               Home
@@ -28,6 +28,13 @@ const Navbar = () => (
           <span className='nav-link'>
             <Link to={'/contact'} className='link link-head'>
               Contact
+            </Link>
+          </span>
+        </li>
+        <li className='nav-item'>
+          <span className='nav-link'>
+            <Link to={'/instamart'} className='link link-head'>
+              Instamart
             </Link>
           </span>
         </li>

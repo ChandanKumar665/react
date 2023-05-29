@@ -1,32 +1,48 @@
-import { getDummyImg, IMG_URL, getFoodSymbol } from '../constant'
+import {
+  getDummyImg,
+  IMG_URL,
+  getFoodSymbol,
+  showStarRatings,
+  getRandomId
+} from '../constant'
 
-const MenuItem = ({ name, price, description, imageId, isVeg }) => {
+const MenuItem = ({
+  name,
+  price,
+  description,
+  imageId,
+  isVeg,
+  ratings,
+  defaultPrice
+}) => {
   return (
     <div className='d-flex'>
       <div className='menu-item mi-left'>
-        {/* <i style={{ color: '#', fontFamily: 'icomoon' }}>&#xf787;</i> */}
-
         <ul>
           <li>
             <img src={getFoodSymbol(isVeg, 16)} />
             <div className='menu-item-text text-format'>
               {name || <div className='dummy'></div>}
             </div>
-            <div className='menu-item-text tex-format'>
-              {(price && `₹${price / 100}`) || (
-                <div className='dummy d-short'></div>
+            <div className='menu-item-text text-format'>
+              {(price && `₹${price / 100}`) ||
+                (defaultPrice && `₹${defaultPrice / 100}`) || (
+                  <div className='dummy d-short'></div>
+                )}
+            </div>
+            <div className='menu-item-text text-format'>
+              {showStarRatings(ratings?.aggregatedRating?.rating) || (
+                <div className='dummy'></div>
               )}
+              &nbsp;({ratings?.aggregatedRating?.ratingCountV2 || 0})
             </div>
-            <div className='menu-item-des text-format'>
-              {description || <div className='dummy'></div>}
-            </div>
+            <div className='menu-item-des text-format'>{description}</div>
           </li>
         </ul>
       </div>
       <div className='menu-item mi-right'>
         <img
           className='card-img menu-item-img'
-          // alt={data?.name}
           src={(imageId && `${IMG_URL}${imageId}`) || getDummyImg('100x100')}
         />
       </div>
@@ -45,7 +61,8 @@ const Category = ({ data }) => {
   const itemCards =
     data?.card?.itemCards ||
     (data?.card?.categories && transformData(data?.card?.categories)) ||
-    Array(1).fill('')
+    Array(2).fill('')
+  console.log(itemCards)
   return (
     <>
       <div className={`${data.className}`}>
@@ -57,7 +74,10 @@ const Category = ({ data }) => {
           )}
         </h5>
         {itemCards.map(({ card }, index) => (
-          <MenuItem {...card?.info} key={card?.info?.id || index} />
+          <MenuItem
+            {...card?.info}
+            key={card?.info?.id || `${index}_${getRandomId()}`}
+          />
         ))}
       </div>
       <hr></hr>

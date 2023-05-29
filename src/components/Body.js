@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import useOnline from '../hooks/useOnline'
+import useRestaurantData from '../hooks/useRestaurantData'
+import Carousel from './Carousel'
 import ResCard from './ResCard'
-import Crousel from './Crousel'
-import { RESTAURANT_LIST_API } from '../constant'
 import Shimmer from './Shimmer'
 
 function search (searchText, resturantsList) {
@@ -11,22 +12,9 @@ function search (searchText, resturantsList) {
 }
 
 const Body = () => {
-  // const [dataList, setDataList] = useState([])
-  const [carousel, setCarousel] = useState({ cards: [] })
-  const [reslist, setReslist] = useState([])
   const [searchText, setSearchText] = useState('')
-
-  useEffect(() => {
-    getResturantsList()
-  }, [])
-
-  async function getResturantsList () {
-    const res = await fetch(RESTAURANT_LIST_API, { mode: 'cors' })
-    const data = await res.json()
-    let response = data?.data?.cards
-    setReslist(response[2]?.data?.data?.cards)
-    setCarousel(response[0]?.data?.data)
-  }
+  const [reslist, carousel] = useRestaurantData()
+  const isOnline = useOnline()
 
   const filter = () => {
     const list = reslist.filter(res => res.data.avgRating > 4.2)
@@ -37,21 +25,22 @@ const Body = () => {
   }
   const sortByRatings = () => {
     const list = reslist.sort((a, b) => b.data.avgRating - a.data.avgRating)
-    console.log(list)
     setReslist(list)
   }
-  console.log(reslist)
+  if (!isOnline) {
+    return (
+      <div className='about'>
+        <h1>No Internet Connection</h1>
+      </div>
+    )
+  }
 
   return (
     <div className='body'>
-      <Crousel
-        {...((carousel.cards.length && { ...carousel }) || {
-          ...{ cards: Array(10).fill('') }
-        })}
-      />
+      <Carousel {...(carousel.cards.length && { ...carousel })} />
 
       <h3>{reslist?.length} resturants</h3>
-      <div className='filter'>
+      <div className='py-2 px-2 border-lime-500 '>
         <button type='button' className='btn btn-dark' onClick={filter}>
           {'Filter > 4.2'}
         </button>

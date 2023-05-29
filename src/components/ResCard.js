@@ -39,7 +39,12 @@ export default function ResCard ({ data }) {
                 data?.avgRating > 3.9 ? 'success' : 'secondary'
               }`}
             >
-              {data?.avgRating || <div className='dummy d-short'></div>}
+              {(data?.avgRating && (
+                <span>
+                  {data.avgRating}
+                  &nbsp;&#9733;
+                </span>
+              )) || <div className='dummy d-short'></div>}
             </span>
           </div>
           <div className='res-cost text-format'>

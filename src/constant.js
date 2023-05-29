@@ -1,3 +1,4 @@
+import logo from './assets/logo1.png'
 export const data = [
   {
     cardType: 'carousel',
@@ -2103,7 +2104,7 @@ export const data = [
 export const IMG_URL =
   'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/'
 
-export const CROUSEL_URL =
+export const CAROUSEL_URL =
   'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/'
 export const BRAND_LOGO =
   'https://img.freepik.com/free-vector/food-white-background_24908-61022.jpg'
@@ -2117,3 +2118,14 @@ export const getFoodSymbol = (isVeg, size) =>
   `https://img.icons8.com/color/${size}/${
     !isVeg ? 'non-' : ''
   }vegetarian-food-symbol.png`
+export const getRandomId = () => Math.floor(Math.random() * 1000)
+export const showStarRatings = (ratings, count) => {
+  const ratingStar = Array(5)
+    .fill('')
+    .map((item, index) => (
+      <span className={index + 1 <= ratings ? 'rating-star' : ''}>
+        &nbsp;&#9733;
+      </span>
+    ))
+  return ratingStar
+}

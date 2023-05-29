@@ -1,12 +1,8 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import About from './components/About'
-import Contact from './components/Contact'
-import Body from './components/Body'
-import Header from './components/Header'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Error from './components/Error'
-import Resturant from './components/Resturant'
+import Header from './components/Header'
+import config from './config'
 
 const AppLayout = () => (
   <div className='container'>
@@ -19,24 +15,7 @@ const appRouter = createBrowserRouter([
     path: '/',
     element: <AppLayout />,
     errorElement: <Error />,
-    children: [
-      {
-        path: '/',
-        element: <Body />
-      },
-      {
-        path: '/about',
-        element: <About />
-      },
-      {
-        path: '/contact',
-        element: <Contact />
-      },
-      {
-        path: '/resturant/:id',
-        element: <Resturant />
-      }
-    ]
+    children: config.map(({ path, element }) => ({ path, element }))
   }
 ])
 

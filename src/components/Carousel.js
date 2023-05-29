@@ -1,6 +1,6 @@
-import { CROUSEL_URL, getDummyImg } from '../constant'
+import { CAROUSEL_URL, getDummyImg } from '../constant'
 
-const Crousel = ({ cards }) => {
+const Carousel = ({ cards }) => {
   return (
     <div className='crousel d-flex'>
       {cards.map((card, index) => (
@@ -9,7 +9,7 @@ const Crousel = ({ cards }) => {
             className='card-img-top'
             src={
               (card?.data?.creativeId &&
-                `${CROUSEL_URL}${card.data.creativeId}`) ||
+                `${CAROUSEL_URL}${card.data.creativeId}`) ||
               getDummyImg('520x520')
             }
           />
@@ -18,4 +18,4 @@ const Crousel = ({ cards }) => {
     </div>
   )
 }
-export default Crousel
+export default Carousel
