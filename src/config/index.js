@@ -4,6 +4,7 @@ import Body from '../components/Body'
 import Contact from '../components/Contact'
 import Resturant from '../components/Restaurant'
 import Shimmer from '../components/Shimmer'
+import Cart from '../components/Cart'
 
 /* *
  * Dynamic import
@@ -40,6 +41,10 @@ const config = [
         <Instamart />
       </Suspense>
     )
+  },
+  {
+    path: '/cart/',
+    element: <Cart />
   }
 ]
 export default config

@@ -29,8 +29,8 @@ const Body = () => {
   }
   if (!isOnline) {
     return (
-      <div className='about'>
-        <h1>No Internet Connection</h1>
+      <div className='mt-32'>
+        <h3 className='text-bold'>No Internet Connection 🔴</h3>
       </div>
     )
   }

@@ -7,13 +7,12 @@ const Resturant = () => {
   const { id } = useParams()
 
   const [resturantInfo, menuList] = useRestaurant(id)
-
   return (
     <div className='resturant'>
       <div className='d-flex'>
         <ResCard data={{ ...resturantInfo, className: 'menu-card' }} />
         <div className='card menu-card'>
-          <h3>Menu</h3>
+          <h3 className='text-bold'>Menu</h3>
           {menuList.map((category, index) => (
             <Category
               data={{ ...category.card, className: 'category' }}
