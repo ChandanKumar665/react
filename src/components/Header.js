@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className='container navbar navbar-expand-sm  navbar-dark fixed-top bg-gray-500'>
       <div className='container-fluid'>
         <a className='navbar-brand' href='#'>
-          <img className='logo' src={BRAND_LOGO} />
+          <img data-testid='logo' className='logo' src={BRAND_LOGO} />
         </a>
       </div>
       <div className='d-flex'>
