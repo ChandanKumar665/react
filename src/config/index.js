@@ -43,7 +43,7 @@ const config = [
     )
   },
   {
-    path: '/cart/',
+    path: '/cart',
     element: <Cart />
   }
 ]

@@ -25,7 +25,9 @@ const Navbar = () => {
       <div className='d-flex'>
         <ul className='navbar-nav d-flex'>
           <li className='flex px-1'>
-            <span className='nav-link'>{isOnline ? '🟢' : '🔴'}</span>
+            <span className='nav-link' data-testid='online'>
+              {isOnline ? '🟢' : '🔴'}
+            </span>
           </li>
           <li className='flex px-1'>
             <span className='nav-link'>
@@ -57,7 +59,11 @@ const Navbar = () => {
           </li>
           <li className='nav-item'>
             <span className='nav-link'>
-              <Link to={'/cart'} className='link link-head'>
+              <Link
+                to={'/cart'}
+                className='link link-head'
+                data-testid='cart-items'
+              >
                 Cart&nbsp;{cartItems && `(${cartItems.length})`}
               </Link>
             </span>

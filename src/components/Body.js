@@ -18,14 +18,12 @@ const Body = () => {
 
   const filter = () => {
     const list = reslist.filter(res => res.data.avgRating > 4.2)
-    setReslist(list)
   }
   const reset = () => {
     // setReslist(restaurants.data.data.cards)
   }
   const sortByRatings = () => {
     const list = reslist.sort((a, b) => b.data.avgRating - a.data.avgRating)
-    setReslist(list)
   }
   if (!isOnline) {
     return (
@@ -56,6 +54,7 @@ const Body = () => {
       <hr></hr>
       <div className='search d-flex'>
         <input
+          data-testid='search-input'
           type='text'
           className='form-control'
           placeholder='Search'
@@ -64,16 +63,18 @@ const Body = () => {
         />
         &nbsp;
         <button
+          data-testid='search-btn'
           type='button'
           className='btn btn-dark'
           onClick={() => {
-            setReslist(search(searchText, reslist))
+            const filterList = search(searchText, reslist)
+            console.log(filterList)
           }}
         >
           Search
         </button>
       </div>
-      <div className='res-list d-flex'>
+      <div className='res-list d-flex' data-testid='res-list'>
         {!reslist.length ? (
           <Shimmer />
         ) : (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { RESTAURANT_LIST_API } from '../constant'
+import { RESTAURANT_LIST_API, data } from '../constant'
 
 const useRestaurantData = () => {
-  const [restaurantList, setRestaurantList] = useState([])
+  const [restaurantList, setRestaurantList] = useState(data || [])
   const [carousel, setCarousel] = useState({ cards: Array(10).fill('') })
 
   useEffect(() => {

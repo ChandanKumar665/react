@@ -11,7 +11,10 @@ const FoodItems = ({
   removeItem
 }) => {
   return (
-    <div className='border-2 border-gray-500 p-2 flex mb-1 shadow-sm'>
+    <div
+      className='border-2 border-gray-500 p-2 flex mb-1 shadow-sm'
+      data-testid='menu'
+    >
       <div className='col-lg-2'>
         <img
           className='h-36'
@@ -27,6 +30,7 @@ const FoodItems = ({
       </div>
       <div className='px-2 col-lg-3 text-right pt-12'>
         <button
+          data-testid='add-btn'
           onClick={e => removeItem(id)}
           className='border-2 border-slate-400 text-red-700 hover:bg-red-50 hover:shadow-md text-sm py-2 px-4 mb-2'
         >
